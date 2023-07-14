@@ -53,8 +53,10 @@ window.addEventListener('load', () => {
 
   let upPad = 250;
   let leftPad = 0;
+  let shuttleWidth = 30;
 
   let view = shuttleBackground.getBoundingClientRect();
+  console.log(view);
 
   up.addEventListener('click', () => {
     if (upPad > 0) {
@@ -73,14 +75,14 @@ window.addEventListener('load', () => {
   });
 
   right.addEventListener('click', () => {
-    if (leftPad < view.x / 2) {
+    if (leftPad < view.width / 2 - shuttleWidth) {
       rocket.style.position = 'relative';
       leftPad += 10;
       rocket.style.left = `${leftPad}px`;
     }
   });
   left.addEventListener('click', () => {
-    if (leftPad > -(view.x / 2)) {
+    if (leftPad > -(view.width / 2) + shuttleWidth) {
       rocket.style.position = 'relative';
       leftPad -= 10;
       rocket.style.left = `${leftPad}px`;
