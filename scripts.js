@@ -26,6 +26,8 @@ window.addEventListener('load', () => {
       flightStatus.innerText = 'Shuttle in flight';
       flightScreen.style.backgroundColor = 'blue';
       shuttleHeight.innerText = '10,000';
+      rocket.style.top = '0';
+      rocket.style.left = '0';
     }
   });
 
@@ -52,6 +54,8 @@ window.addEventListener('load', () => {
   let upPad = 250;
   let leftPad = 0;
 
+  let view = shuttleBackground.getBoundingClientRect();
+
   up.addEventListener('click', () => {
     if (upPad > 0) {
       rocket.style.position = 'relative';
@@ -69,14 +73,14 @@ window.addEventListener('load', () => {
   });
 
   right.addEventListener('click', () => {
-    if (leftPad < 150) {
+    if (leftPad < view.x / 2) {
       rocket.style.position = 'relative';
       leftPad += 10;
       rocket.style.left = `${leftPad}px`;
     }
   });
   left.addEventListener('click', () => {
-    if (leftPad > -150) {
+    if (leftPad > -(view.x / 2)) {
       rocket.style.position = 'relative';
       leftPad -= 10;
       rocket.style.left = `${leftPad}px`;
